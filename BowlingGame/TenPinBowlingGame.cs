@@ -5,28 +5,27 @@ namespace BowlingGame
 {
 	public class TenPinBowlingGame : ISimpleBowlingGame
 	{
-		private readonly IEnumerator<ISimpleBowlingFrame> _Enumerator;
+		private List<ISimpleBowlingFrame> _frames;
+		private int _CurrentIndex = 0;
 
 		public TenPinBowlingGame()
 		{
-			Frames = Enumerable.Repeat<ISimpleBowlingFrame>(new TenPinBowlingFrame(), 9).ToList();
-			Frames.Add(new TenPinBowlingFinalFrame());
-			_Enumerator = Frames.GetEnumerator();
+			_frames = Enumerable.Repeat<ISimpleBowlingFrame>(new TenPinBowlingFrame(), 9).ToList();
+			_frames.Add(new TenPinBowlingFinalFrame());
 		}
 
 		/// <summary>The current game score.</summary>
-		public int Score => Frames.Sum(f => f.Score);
-
-		public List<ISimpleBowlingFrame> Frames { get; }
+		public int Score => _frames.Sum(f => f.Score ?? 0);
 
 		/// <summary>Called when a player completes a frame.</summary>
 		/// <param name="throws">Number of pins knocked down by each throw.</param>
 		public void RecordFrame(params int[] throws)
 		{
-			if (_Enumerator.MoveNext())
+			for (int i = _CurrentIndex; i > -1; i--)
 			{
-				_Enumerator.Current.RecordThrows(throws);
+				_frames[i].RecordThrows(throws);
 			}
+			_CurrentIndex++;
 		}
 	}
 }
