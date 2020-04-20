@@ -5,18 +5,19 @@ namespace BowlingGame.Tests
 	[TestClass]
 	public class TenPinBowlingGameTests
 	{
-		ISimpleBowlingGame game;
+		private SimpleBowlingGameFactory factory;
 
 		[TestInitialize]
 		public void Initialize()
 		{
-			game = SimpleBowlingGame.Create(TenPinBowlingGame.Setup);
+			factory = new TenPinBowlingGameFactory();
 		}
 
 		[TestMethod]
 		public void PerfectGame()
 		{
 			// Arrange
+			ISimpleBowlingGame game = factory.Create();
 
 			// Act
 			game.RecordFrame(10); // 1st frame
@@ -38,6 +39,7 @@ namespace BowlingGame.Tests
 		public void EmptyGame()
 		{
 			// Arrange
+			ISimpleBowlingGame game = factory.Create();
 
 			// Act
 			game.RecordFrame(0, 0); // 1st frame
@@ -59,6 +61,7 @@ namespace BowlingGame.Tests
 		public void LowGame()
 		{
 			// Arrange
+			ISimpleBowlingGame game = factory.Create();
 
 			// Act
 			game.RecordFrame(1, 1); // 1st frame
@@ -80,6 +83,7 @@ namespace BowlingGame.Tests
 		public void MidGame()
 		{
 			// Arrange
+			ISimpleBowlingGame game = factory.Create();
 
 			// Act
 			game.RecordFrame(5, 5); // 1st frame
