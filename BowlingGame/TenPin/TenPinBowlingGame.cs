@@ -1,24 +1,25 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace BowlingCalculator
+namespace BowlingCalculator.TenPin
 {
 	public class TenPinBowlingGame : ISimpleBowlingGame
 	{
-		private List<ISimpleBowlingFrame> _frames = new List<ISimpleBowlingFrame>();
+		private readonly List<ISimpleBowlingFrame> _Frames = new List<ISimpleBowlingFrame>();
 		private int _CurrentIndex = 0;
 
+		/// <summary>Initializes a new instance of the <see cref="TenPinBowlingGame" /> class.</summary>
 		public TenPinBowlingGame()
 		{
 			for (int i = 0; i < 9; i++)
 			{
-				_frames.Add(new TenPinBowlingFrame());
+				_Frames.Add(new TenPinBowlingFrame());
 			}
-			_frames.Add(new TenPinBowlingFinalFrame());
+			_Frames.Add(new TenPinBowlingFinalFrame());
 		}
 
 		/// <summary>The current game score.</summary>
-		public int Score => _frames.Sum(f => f.Score ?? 0);
+		public int Score => _Frames.Sum(f => f.Score ?? 0);
 
 		/// <summary>Called when a player completes a frame.</summary>
 		/// <param name="throws">Number of pins knocked down by each throw.</param>
@@ -26,7 +27,7 @@ namespace BowlingCalculator
 		{
 			for (int i = _CurrentIndex; i > -1; i--)
 			{
-				_frames[i].RecordThrows(throws);
+				_Frames[i].RecordThrows(throws);
 			}
 			_CurrentIndex++;
 		}

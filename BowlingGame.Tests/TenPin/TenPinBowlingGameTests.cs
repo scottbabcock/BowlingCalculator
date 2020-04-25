@@ -1,23 +1,20 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace BowlingCalculator.Tests
+namespace BowlingCalculator.TenPin.Tests
 {
 	[TestClass]
 	public class TenPinBowlingGameTests
 	{
-		private SimpleBowlingGameFactory factory;
+		private SimpleBowlingGameFactory _Factory;
 
 		[TestInitialize]
-		public void Initialize()
-		{
-			factory = new TenPinBowlingGameFactory();
-		}
+		public void Initialize() => _Factory = new TenPinBowlingGameFactory();
 
 		[TestMethod]
 		public void PerfectGame()
 		{
 			// Arrange
-			ISimpleBowlingGame game = factory.Create();
+			ISimpleBowlingGame game = _Factory.Create();
 
 			// Act
 			game.RecordFrame(10); // 1st frame
@@ -39,7 +36,7 @@ namespace BowlingCalculator.Tests
 		public void EmptyGame()
 		{
 			// Arrange
-			ISimpleBowlingGame game = factory.Create();
+			ISimpleBowlingGame game = _Factory.Create();
 
 			// Act
 			game.RecordFrame(0, 0); // 1st frame
@@ -61,7 +58,7 @@ namespace BowlingCalculator.Tests
 		public void LowGame()
 		{
 			// Arrange
-			ISimpleBowlingGame game = factory.Create();
+			ISimpleBowlingGame game = _Factory.Create();
 
 			// Act
 			game.RecordFrame(1, 1); // 1st frame
@@ -83,7 +80,7 @@ namespace BowlingCalculator.Tests
 		public void MidGame()
 		{
 			// Arrange
-			ISimpleBowlingGame game = factory.Create();
+			ISimpleBowlingGame game = _Factory.Create();
 
 			// Act
 			game.RecordFrame(5, 5); // 1st frame
@@ -105,7 +102,7 @@ namespace BowlingCalculator.Tests
 		public void MixGame()
 		{
 			// Arrange
-			ISimpleBowlingGame game = factory.Create();
+			ISimpleBowlingGame game = _Factory.Create();
 
 			// Act
 			game.RecordFrame(4, 5); // 1st frame
