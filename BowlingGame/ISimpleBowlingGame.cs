@@ -1,4 +1,4 @@
-﻿namespace BowlingGame
+﻿namespace BowlingCalculator
 {
 	public interface ISimpleBowlingGame
 	{

@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 
-namespace BowlingGame
+namespace BowlingCalculator
 {
 	public class TenPinBowlingFinalFrame : ISimpleBowlingFrame
 	{
