@@ -5,14 +5,14 @@ namespace BowlingCalculator
 {
 	public class TenPinBowlingFrame : ISimpleBowlingFrame
 	{
-		private int[] _throws;
+		private List<int> _throws = new List<int>();
 		private readonly List<int> _futureThrows = new List<int>();
 
 		/// <summary>Gets a value indicating if the frame is a strike.</summary>
-		public bool IsStrke => _throws.Length == 1 && _throws[0] == 10;
+		public bool IsStrke => _throws.Count == 1 && _throws[0] == 10;
 
 		/// <summary>Gets a value indicating if the frame is a spare.</summary>
-		public bool IsSpare => _throws.Length == 2 && _throws.Sum() == 10;
+		public bool IsSpare => _throws.Count == 2 && _throws.Sum() == 10;
 
 		/// <summary>The current frame score.</summary>
 		public int? Score => _throws?.Sum() + (IsStrke ? _futureThrows.Take(2).Sum() : (IsSpare ? _futureThrows.Take(1).Sum() : 0));
@@ -21,9 +21,9 @@ namespace BowlingCalculator
 		/// <param name="throws">Number of pins knocked down by each throw.</param>
 		public void RecordThrows(params int[] throws)
 		{
-			if (_throws == null)
+			if (_throws.Count == 0)
 			{
-				_throws = throws;
+				_throws.AddRange(throws);
 			}
 			else
 			{

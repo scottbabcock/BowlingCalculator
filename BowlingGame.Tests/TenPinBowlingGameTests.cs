@@ -100,5 +100,27 @@ namespace BowlingCalculator.Tests
 			// Assert
 			Assert.AreEqual(150, game.Score);
 		}
+
+		[TestMethod]
+		public void MixGame()
+		{
+			// Arrange
+			ISimpleBowlingGame game = factory.Create();
+
+			// Act
+			game.RecordFrame(4, 5); // 1st frame
+			game.RecordFrame(7, 3); // 2nd frame
+			game.RecordFrame(6, 2); // 3rd frame
+			game.RecordFrame(9, 1); // 4th frame
+			game.RecordFrame(10); // 5th frame
+			game.RecordFrame(4, 6); // 6th frame
+			game.RecordFrame(7, 2); // 7th frame
+			game.RecordFrame(9, 0); // 8th frame
+			game.RecordFrame(10); // 9th frame
+			game.RecordFrame(3, 4); // 10th frame
+
+			// Assert
+			Assert.AreEqual(132, game.Score);
+		}
 	}
 }

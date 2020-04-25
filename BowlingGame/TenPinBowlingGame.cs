@@ -5,12 +5,15 @@ namespace BowlingCalculator
 {
 	public class TenPinBowlingGame : ISimpleBowlingGame
 	{
-		private List<ISimpleBowlingFrame> _frames;
+		private List<ISimpleBowlingFrame> _frames = new List<ISimpleBowlingFrame>();
 		private int _CurrentIndex = 0;
 
 		public TenPinBowlingGame()
 		{
-			_frames = Enumerable.Repeat<ISimpleBowlingFrame>(new TenPinBowlingFrame(), 9).ToList();
+			for (int i = 0; i < 9; i++)
+			{
+				_frames.Add(new TenPinBowlingFrame());
+			}
 			_frames.Add(new TenPinBowlingFinalFrame());
 		}
 
