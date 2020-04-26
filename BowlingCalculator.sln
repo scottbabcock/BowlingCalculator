@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingCalculator", "BowlingGame\BowlingCalculator.csproj", "{29C74FCB-AA3A-4C18-9ADD-F7978D01699E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingCalculator", "BowlingCalculator\BowlingCalculator.csproj", "{29C74FCB-AA3A-4C18-9ADD-F7978D01699E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingCalculator.Tests", "BowlingGame.Tests\BowlingCalculator.Tests.csproj", "{A995AFDC-8B5A-4FFE-AF35-7577C7435A6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BowlingCalculator.Tests", "BowlingCalculator.Tests\BowlingCalculator.Tests.csproj", "{A995AFDC-8B5A-4FFE-AF35-7577C7435A6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
